@@ -1,0 +1,13 @@
+{
+    "name": "acsher/acsher",
+    "description": "The Acsher Framework.",
+    "keywords": ["framework", "acsher"],
+    "license": "MIT",
+    "homepage": "https://acsher.com",
+
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {"acsher\\": ""}
+    }
+}
