@@ -15,5 +15,41 @@ namespace acsher\db;
  */
 class DbManager
 {
+    public $connections = [];
 
+    public function __construct() {
+    }
+
+    protected function connection($name) {
+
+    }
+
+    public function disconnection($name) {
+
+    }
+
+    public function reconnection() {
+
+    }
+
+    public function createConnection() {
+
+    }
+
+    public function setDefaultConnection() {
+
+    }
+
+    public function getDefaultConnection() {
+
+    }
+
+    public function getConnections() {
+        return $this->connections;
+    }
+
+    public function __call($method, $parameters)
+    {
+        return $this->connection()->$method(...$parameters);
+    }
 }

@@ -6,14 +6,13 @@
 
 namespace acsher\db;
 
-
 /**
- * ConnectionFactory class
+ * Query class
  *
  * @author felybo
  * @since 1.0
  */
-class ConnectionFactory
+class Query
 {
 
 }
