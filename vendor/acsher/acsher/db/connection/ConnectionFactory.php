@@ -22,11 +22,17 @@ class ConnectionFactory
             'prefix' => ''
          ];
 
-    public function create($config, $name){
+    public function create($config, $name) {
 
     }
 
-    protected function createConnection($driver) {
+    protected function createConnection($driver, array $config) {
 
+        switch ($driver) {
+            case 'mysql':
+                return new MySqlConnection($config);
+            case 'pgsql':
+                return new PostgresConnection($config);
+        }
     }
 }

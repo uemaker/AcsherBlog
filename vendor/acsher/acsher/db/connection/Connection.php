@@ -35,7 +35,6 @@ abstract class Connection
         ];
         $dsn = $this->getDsn();
         $options = $this->getOptions();
-
         try {
             $this->pdo = new \PDO($dsn, $username, $password, $options);
         } catch (\PDOException $e) {
@@ -43,10 +42,19 @@ abstract class Connection
     }
 
     protected function getDsn() {
-
+        $config = $this->config;
+        if(!empty($config['unix_socket'])){
+            $dsn = "mysql:unix_socket={$config['unix_socket']};dbname={$config['database']}";
+        }else {
+            $port = !empty($config['port']) ? 'port='.$config['port'].';' : '';
+            $dsn = "mysql:host={$config['host']};{$port}dbname={$config['database']}";
+        }
+        return $dsn;
     }
 
     protected function getOptions() {
-
+        $config = $this->config;
+        $options = isset($config['options']) ? $config['options'] : [];
+        return array_diff_key($this->options, $options) + $options;
     }
 }
